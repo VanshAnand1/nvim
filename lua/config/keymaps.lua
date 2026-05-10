@@ -1,7 +1,12 @@
+-- D: Command
+-- A: Option
+-- C: Control
+-- leader: Space Bar
+-- S: Shift
+-- CR: Enter
 -- KEYBINDS:
 -- save and close
-vim.keymap.set({"i"}, "<D-s>", "<Esc>:w<CR>")
-vim.keymap.set({"n", "v"}, "<D-s>", vim.cmd.w)
+vim.keymap.set({"n", "v", "i"}, "<D-s>", vim.cmd.w)
 vim.keymap.set({"n","i","v"}, "<C-q>", vim.cmd.q)
 
 -- Neotree

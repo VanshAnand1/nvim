@@ -1,17 +1,17 @@
--- local time = require("utility.time")
---
--- local battery = require("utility.battery")
---
--- local batteryinfo = {}
--- local function battery_setup()
---     local bString = battery.get_battery()
---     batteryinfo.icon = bString.sub(0, 4)
---     return bString
--- end
--- local function get_battery()
---     vim.go.laststatus = 3
---     return battery_setup()
--- end
+local time = require("utility.time")
+
+local battery = require("utility.battery")
+
+local batteryinfo = {}
+local function battery_setup()
+    local bString = battery.get_battery()
+    batteryinfo.icon = bString.sub(0, 4)
+    return bString
+end
+local function get_battery()
+    vim.go.laststatus = 3
+    return battery_setup()
+end
 
 
 return {
@@ -19,6 +19,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = { 
         options = {
+            theme = 'tokyonight',
             icons_enabled = true,
             component_separators = { left = '', right = '' },
             section_separators = { left = '', right = '' },
@@ -47,16 +48,16 @@ return {
             },
             lualine_x = { 'filetype' },
             lualine_y = { 'location',
-                -- {
-                --     get_battery,
-                --     icon = batteryinfo.icon
-                -- }
+                {
+                    get_battery,
+                    icon = batteryinfo.icon
+                }
             },
             lualine_z = {
-            --     {
-            --         time.get_time,
-            --         icon = '', 
-            --     },
+                {
+                    time.get_time,
+                    icon = '', 
+                },
             }
         },
         inactive_sections = {
@@ -65,13 +66,13 @@ return {
             lualine_c = { 'filename' },
             lualine_x = { 'location' },
             lualine_y = { 
-                -- get_battery 
+                get_battery 
                  },
             lualine_z = {
-                -- {
-                --     time.get_time,
-                --     icon = '', 
-                -- },
+                {
+                    time.get_time,
+                    icon = '', 
+                },
             }
         },
         tabline = {},

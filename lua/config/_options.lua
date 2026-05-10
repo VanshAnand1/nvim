@@ -16,3 +16,8 @@ vim.opt.wrap = false
 vim.opt.incsearch = true
 vim.opt.mouse = "nv"
 vim.g.dispatch_no_maps = 1
+
+-- LangMenu
+vim.api.nvim_create_user_command("LangMenu", function()
+	require("languages.menu").select_languages()
+end, { desc = "Open language selection menu" })
