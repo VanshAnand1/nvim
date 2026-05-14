@@ -7,7 +7,7 @@
 -- KEYBINDS:
 -- save and close
 vim.keymap.set({"n", "v", "i"}, "<D-s>", vim.cmd.w)
-vim.keymap.set({"n","i","v"}, "<C-q>", vim.cmd.q)
+vim.keymap.set({"n", "i", "v"}, "<D-d>", vim.cmd.q)
 
 -- Neotree
 vim.keymap.set("n", "<leader>f", vim.cmd.Neotree, {desc = "Open Neotree"})

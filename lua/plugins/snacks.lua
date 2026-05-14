@@ -214,19 +214,19 @@ return {
 			desc = "Dismiss All Notifications",
 		},
 		{
-			"<c-/>",
+			"<D-/>",
 			function()
-				Snacks.terminal()
-                vim.cmd("horizontal resize 10")
+				Snacks.terminal.focus()
+                -- vim.cmd("horizontal resize 10")
 			end,
 			desc = "Toggle Terminal",
 		},
 		{
 			"<leader>/",
 			function()
-				Snacks.terminal()
+				Snacks.terminal.focus()
 				vim.cmd("wincmd L")
-				vim.cmd("vertical resize 60")
+				-- vim.cmd("vertical resize 60")
 			end,
 			desc = "Open Vertical Terminal",
 		},
