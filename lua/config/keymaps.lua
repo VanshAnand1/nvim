@@ -18,6 +18,9 @@ vim.keymap.set({"n", "v", "o"}, "l", "<Right>", { remap = false, desc = "Move Ri
 vim.keymap.set({"n", "v", "o"}, "k", "v:count1 . 'gj'", { expr = true, remap = false, desc = "Move Down" })
 vim.keymap.set({"n", "v", "o"}, "i", "v:count1 . 'gk'", { expr = true, remap = false, desc = "Move Up" })
 
+vim.keymap.set({"n", "v", "o"}, "<S-j>", "<S-Left>")
+vim.keymap.set({"n", "v", "o"}, "<S-l>", "<S-Right>")
+
 -- Window Movement
 vim.keymap.set("n", "<M-j>", "<C-w><C-h>", { desc = "Window Left" })
 vim.keymap.set("n", "<M-k>", "<C-w><C-j>", { desc = "Window Down" })
