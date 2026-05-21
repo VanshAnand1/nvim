@@ -37,7 +37,7 @@ return {
             ignore_focus = {},
             always_divide_middle = true,
             always_show_tabline = true,
-            globalstatus = false,
+            globalstatus = true,
             refresh = {
                 statusline = 100,
                 tabline = 100,
@@ -69,24 +69,24 @@ return {
                 },
             }
         },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { 'filename' },
-            lualine_x = { 'location' },
-            lualine_y = { 
-                {
-                    get_battery,
-                    cond = is_mac -- Only displays on a Mac
-                }
-            },
-            lualine_z = {
-                {
-                    time.get_time,
-                    icon = '', 
-                },
-            }
-        },
+        -- inactive_sections = {
+        --     lualine_a = {},
+        --     lualine_b = {},
+        --     lualine_c = { 'filename' },
+        --     lualine_x = { 'location' },
+        --     lualine_y = { 
+        --         {
+        --             get_battery,
+        --             cond = is_mac -- Only displays on a Mac
+        --         }
+        --     },
+        --     lualine_z = {
+        --         {
+        --             time.get_time,
+        --             icon = '', 
+        --         },
+        --     }
+        -- },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
