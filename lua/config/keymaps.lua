@@ -33,8 +33,11 @@ vim.keymap.set("n", "<leader>f", vim.cmd.Neotree, { desc = "Open Neotree" })
 vim.keymap.set("n", "yp", ":let @+ = expand('%:p')<CR>") -- copy the path of the file
 
 -- Line Movement
-vim.keymap.set("v", "K", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "I", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "I", "{", { desc = "Move up one code block" })
+vim.keymap.set("n", "K", "}", { desc = "Move down one code block" })
+
+vim.keymap.set("n", "J", "b", { desc = "Move left by one word" })
+vim.keymap.set("n", "L", "w", { desc = "Move right by one word" })
 
 -- Buffer Sizing and Location
 vim.keymap.set({ "n", "t", "v", "i" }, "<D-.>", "<C-w>>")
@@ -75,3 +78,4 @@ vim.keymap.set(
 	{ remap = false, desc = "Copy current line to system clipboard" }
 )
 vim.keymap.set({ "n", "v" }, "<M-p>", '"+<LeftRight>p', { remap = false, desc = "Paste from system clipboard" })
+vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
