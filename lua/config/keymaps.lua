@@ -22,6 +22,9 @@ vim.keymap.set({ "n", "v", "o" }, "i", "v:count1 . 'gk'", { expr = true, remap =
 vim.keymap.set({ "n", "v", "o" }, "<S-j>", "<S-Left>")
 vim.keymap.set({ "n", "v", "o" }, "<S-l>", "<S-Right>")
 
+vim.keymap.set("v", "I", ":m '<-2<CR>gv=gv", { desc = "Move block up" })
+vim.keymap.set("v", "K", ":m '>+1<CR>gv=gv", { desc = "Move block down" })
+
 -- Window Movement
 vim.keymap.set("n", "<M-j>", "<C-w><C-h>", { desc = "Window Left" })
 vim.keymap.set("n", "<M-k>", "<C-w><C-j>", { desc = "Window Down" })
