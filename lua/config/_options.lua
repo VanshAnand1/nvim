@@ -21,3 +21,17 @@ vim.g.dispatch_no_maps = 1
 vim.api.nvim_create_user_command("LangMenu", function()
 	require("languages.menu").select_languages()
 end, { desc = "Open language selection menu" })
+
+-- Sync Neovim yank/paste with system clipboard
+vim.opt.clipboard = "unnamedplus"
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}

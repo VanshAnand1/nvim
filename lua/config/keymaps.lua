@@ -73,12 +73,10 @@ vim.keymap.set("n", "<Tab>", function()
 end)
 
 -- Clipboard
-vim.keymap.set("v", "<M-y>", '"+<LeftRight>y', { remap = false, desc = "Copy selection to system clipboard" })
-vim.keymap.set(
-	"n",
-	"<M-y>",
-	'"+<LeftRight>y<LeftRight>y',
-	{ remap = false, desc = "Copy current line to system clipboard" }
-)
-vim.keymap.set({ "n", "v" }, "<M-p>", '"+<LeftRight>p', { remap = false, desc = "Paste from system clipboard" })
+-- Custom movement/insert map
 vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
+
+-- Map 'd', 'D', and 'x' to the black hole register (never copy to clipboard)
+vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { silent = true })
+vim.keymap.set({ 'n', 'v' }, 'D', '"_D', { silent = true })
+vim.keymap.set('n', 'x', '"_x', { silent = true })
