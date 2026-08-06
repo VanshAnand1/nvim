@@ -42,6 +42,9 @@ vim.keymap.set("n", "K", "}", { desc = "Move down one code block" })
 vim.keymap.set("n", "J", "b", { desc = "Move left by one word" })
 vim.keymap.set("n", "L", "w", { desc = "Move right by one word" })
 
+-- Custom movement/insert map
+vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
+
 -- Buffer Sizing and Location
 vim.keymap.set({ "n", "t", "v", "i" }, "<D-.>", "<C-w>>")
 vim.keymap.set({ "n", "t", "v", "i" }, "<D-,>", "<C-w><")
@@ -71,11 +74,10 @@ vim.keymap.set("n", "<Tab>", function()
 	local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
 	vim.api.nvim_feedkeys(tab, "n", false)
 end)
+vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch, { desc = "Clear search highlight" })
+
 
 -- Clipboard
--- Custom movement/insert map
-vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
-
 -- Map 'd', 'D', and 'x' to the black hole register (never copy to clipboard)
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'D', '"_D', { silent = true })

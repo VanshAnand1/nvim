@@ -1,30 +1,33 @@
 local function getPythonPath()
+    -- Check for an active virtual environment first
+    local venv = vim.env.VIRTUAL_ENV
+    if venv then
+        return venv .. "/bin/python"
+    end
+    -- Fall back to system path
     return vim.fn.exepath("python3") ~= "" and vim.fn.exepath("python3") or vim.fn.exepath("python")
 end
 
 return {
-	mason_packages = { "pyright", "ruff", "black", "debugpy" },
-	linters = { python = { "ruff" } },
-	formatters = { python = { "black" } },
+	-- Dropped black, Ruff handles formatting now
+	mason_packages = { "pyright", "ruff", "debugpy" },
+	
+	-- Removed linters table (Ruff LSP provides diagnostics)
+	-- Use Ruff for formatting
+	formatters = { python = { "ruff" } },
 
-	-- Multiple LSP servers: Pyright for type checking, Ruff for linting/code actions
 	lsp = {
 		{
 			name = "pyright",
 			config = {
 				settings = {
 					python = {
-						-- Explicitly set Python path (pyright will use this to find stdlib)
 						pythonPath = getPythonPath(),
 						analysis = {
-							-- Use 'basic' instead of 'strict' - much less noisy
 							typeCheckingMode = "basic",
-							-- Auto-search for virtualenvs
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
-							-- Better import resolution
 							diagnosticMode = "workspace",
-							-- Disable unnecessary warnings
 							diagnosticSeverityOverrides = {
 								-- Turn off noisy type warnings
 								reportUnknownVariableType = "none",
@@ -34,14 +37,16 @@ return {
 								reportMissingParameterType = "none",
 								reportMissingTypeArgument = "none",
 								reportUnknownLambdaType = "none",
+								reportArgumentType = "none",
 
-								-- Keep useful warnings
-								reportUnusedImport = "warning",
-								reportUnusedVariable = "warning",
-								reportUndefinedVariable = "error",
-								reportGeneralTypeIssues = "Warning",
+								-- DISABLED: Let Ruff handle these to prevent duplicate diagnostics
+								reportUnusedImport = "none",
+								reportUnusedVariable = "none",
+								reportUndefinedVariable = "none",
+
+								-- Keep useful Pyright-specific warnings
+								reportGeneralTypeIssues = "warning",
 								reportOptionalMemberAccess = "warning",
-                                reportArgumentType = "none"
 							},
 						},
 					},
