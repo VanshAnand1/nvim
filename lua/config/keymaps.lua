@@ -82,3 +82,9 @@ vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch, { desc = "Clear search highligh
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'D', '"_D', { silent = true })
 vim.keymap.set('n', 'x', '"_x', { silent = true })
+-- Stop 'c' (like cw, ce) and 'C' from copying replaced text
+vim.keymap.set({ 'n', 'v' }, 'c', '"_c', { silent = true })
+vim.keymap.set({ 'n', 'v' }, 'C', '"_C', { silent = true })
+
+-- When pasting over text in visual mode, do not copy the replaced text
+vim.keymap.set("v", "p", '"_dP', { silent = true })

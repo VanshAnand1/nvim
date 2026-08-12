@@ -9,6 +9,7 @@ return {
 	lazy = false, -- neo-tree will lazily load itself
 	opts = {
 		window = {
+            width = 25,
 			mappings = {
 				["i"] = function()
 					vim.cmd("normal! k")
@@ -22,13 +23,4 @@ return {
 			},
 		},
 	},
-	-- opts = {
-	-- 	filesystem = {
-	-- 		filtered_items = {
-	-- 			visible = true,
-	-- 			hide_dotfiles = false,
-	-- 			hide_gitignored = false,
-	-- 		},
-	-- 	},
-	-- },
 }
