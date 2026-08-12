@@ -88,3 +88,6 @@ vim.keymap.set({ 'n', 'v' }, 'C', '"_C', { silent = true })
 
 -- When pasting over text in visual mode, do not copy the replaced text
 vim.keymap.set("v", "p", '"_dP', { silent = true })
+
+-- Select All
+vim.keymap.set({ "n", "v", "i" }, "<D-a>", "<Esc>ggVG", { desc = "Select All" })
