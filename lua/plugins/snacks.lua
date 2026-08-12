@@ -216,22 +216,22 @@ return {
 		{
 			"<D-/>",
 			function()
-				Snacks.terminal.focus()
-                -- vim.cmd("horizontal resize 10")
+				-- Opens a horizontal split at the bottom, 15 rows tall
+				Snacks.terminal.toggle(nil, { win = { position = "bottom", height = 8 } })
 			end,
 			desc = "Toggle Terminal",
 		},
 		{
 			"<leader>/",
 			function()
-				Snacks.terminal.focus()
-				vim.cmd("wincmd L")
-				-- vim.cmd("vertical resize 60")
+				-- Terminal 2: Right split. Passing vim.o.shell gives this a unique ID 
+				-- so it doesn't just toggle the bottom terminal.
+				Snacks.terminal.toggle(vim.o.shell, { win = { position = "right", width = 30 } })
 			end,
 			desc = "Open Vertical Terminal",
-		},
-		{
-			"]]",
+		},			
+        {
+        "]]",
 			function()
 				Snacks.words.jump(vim.v.count1)
 			end,
