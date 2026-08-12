@@ -213,23 +213,22 @@ return {
 			end,
 			desc = "Dismiss All Notifications",
 		},
-		{
+        {
 			"<D-/>",
 			function()
-				-- Opens a horizontal split at the bottom, 15 rows tall
-				Snacks.terminal.toggle(nil, { win = { position = "bottom", height = 8 } })
+				-- Uses .focus to prevent closing when unfocused, while keeping the height limit
+				Snacks.terminal.focus(nil, { win = { position = "bottom", height = 8 } })
 			end,
-			desc = "Toggle Terminal",
+			desc = "Focus Terminal",
 		},
 		{
 			"<leader>/",
 			function()
-				-- Terminal 2: Right split. Passing vim.o.shell gives this a unique ID 
-				-- so it doesn't just toggle the bottom terminal.
-				Snacks.terminal.toggle(vim.o.shell, { win = { position = "right", width = 30 } })
+				-- Uses .focus for the vertical terminal (vim.o.shell keeps it an independent instance)
+				Snacks.terminal.focus(vim.o.shell, { win = { position = "right", width = 60 } })
 			end,
-			desc = "Open Vertical Terminal",
-		},			
+			desc = "Focus Vertical Terminal",
+		},	
         {
         "]]",
 			function()
