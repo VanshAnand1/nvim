@@ -216,19 +216,23 @@ return {
         {
 			"<D-/>",
 			function()
-				-- Uses .focus to prevent closing when unfocused, while keeping the height limit
-				Snacks.terminal.focus(nil, { win = { position = "bottom", height = 8 } })
+				Snacks.terminal.focus(nil, { 
+					id = "bottom_term", -- Locks the instance so it doesn't duplicate
+					win = { position = "bottom", height = 8 } 
+				})
 			end,
 			desc = "Focus Terminal",
 		},
 		{
 			"<leader>/",
 			function()
-				-- Uses .focus for the vertical terminal (vim.o.shell keeps it an independent instance)
-				Snacks.terminal.focus(vim.o.shell, { win = { position = "right", width = 60 } })
+				Snacks.terminal.focus(vim.o.shell, { 
+					id = "right_term", -- Locks the vertical instance
+					win = { position = "right", width = 60 } 
+				})
 			end,
 			desc = "Focus Vertical Terminal",
-		},	
+		},
         {
         "]]",
 			function()
