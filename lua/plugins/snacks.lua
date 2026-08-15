@@ -213,12 +213,12 @@ return {
 			end,
 			desc = "Dismiss All Notifications",
 		},
-        {
+		{
 			"<D-/>",
 			function()
-				Snacks.terminal.focus(nil, { 
+				Snacks.terminal.focus(nil, {
 					id = "bottom_term", -- Locks the instance so it doesn't duplicate
-					win = { position = "bottom", height = 8 } 
+					win = { position = "bottom", height = 8 },
 				})
 			end,
 			desc = "Focus Terminal",
@@ -226,15 +226,15 @@ return {
 		{
 			"<leader>/",
 			function()
-				Snacks.terminal.focus(vim.o.shell, { 
+				Snacks.terminal.focus(vim.o.shell, {
 					id = "right_term", -- Locks the vertical instance
-					win = { position = "right", width = 60 } 
+					win = { position = "right", width = 60 },
 				})
 			end,
 			desc = "Focus Vertical Terminal",
 		},
-        {
-        "]]",
+		{
+			"]]",
 			function()
 				Snacks.words.jump(vim.v.count1)
 			end,

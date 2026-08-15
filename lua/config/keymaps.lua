@@ -60,8 +60,6 @@ vim.keymap.set("n", "<S-Tab>", vim.cmd.bnext)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Misc
-vim.keymap.set("n", "x", '"_x') -- does not copy when deleting single character
-vim.keymap.set("n", "s", '"_s') -- does not copy when replacing single character
 vim.keymap.set({ "n", "v" }, ">", ">gv") -- stays highlighted when indenting
 vim.keymap.set({ "n", "v" }, "<", "<gv") -- stays highlighted when un-indenting
 vim.keymap.set("n", "n", "nzz") -- centres search query forwards
@@ -79,6 +77,7 @@ vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch, { desc = "Clear search highligh
 
 -- Clipboard
 -- Map 'd', 'D', and 'x' to the black hole register (never copy to clipboard)
+vim.keymap.set("n", "s", '"_s') -- does not copy when replacing single character
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'D', '"_D', { silent = true })
 vim.keymap.set('n', 'x', '"_x', { silent = true })
