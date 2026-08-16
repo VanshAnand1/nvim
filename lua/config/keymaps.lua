@@ -49,7 +49,7 @@ vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
 vim.keymap.set({ "n", "t", "v", "i" }, "<D-.>", "<C-w>>")
 vim.keymap.set({ "n", "t", "v", "i" }, "<D-,>", "<C-w><")
 vim.keymap.set("n", "<D-j>", "<C-w>H", { desc = "Move window Left" })
-vim.keymap.set("n", "<D-l>", "<C-w>L", { desc = "Move window Right"})
+vim.keymap.set("n", "<D-l>", "<C-w>L", { desc = "Move window Right" })
 vim.keymap.set("n", "<D-i>", "<C-w>K", { desc = "Move window Up" })
 vim.keymap.set("n", "<D-k>", "<C-w>J", { desc = "Move window Down" })
 
@@ -63,14 +63,14 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Clipboard
 -- Map 'd', 'D', and 'x' to the black hole register (never copy to clipboard)
-vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { silent = true })
-vim.keymap.set({ 'n', 'v' }, 'D', '"_D', { silent = true })
-vim.keymap.set('n', 'x', '"_x', { silent = true })
+vim.keymap.set({ "n", "v" }, "d", '"_d', { silent = true })
+vim.keymap.set({ "n", "v" }, "D", '"_D', { silent = true })
+vim.keymap.set("n", "x", '"_x', { silent = true })
 vim.keymap.set("n", "x", '"_x') -- does not copy when deleting single character
 vim.keymap.set("n", "s", '"_s') -- does not copy when replacing single character
 -- Stop 'c' (like cw, ce) and 'C' from copying replaced text
-vim.keymap.set({ 'n', 'v' }, 'c', '"_c', { silent = true })
-vim.keymap.set({ 'n', 'v' }, 'C', '"_C', { silent = true })
+vim.keymap.set({ "n", "v" }, "c", '"_c', { silent = true })
+vim.keymap.set({ "n", "v" }, "C", '"_C', { silent = true })
 
 -- When pasting over text in visual mode, do not copy the replaced text
 vim.keymap.set("v", "p", '"_dP', { silent = true })
@@ -83,14 +83,14 @@ vim.keymap.set({ "n", "v" }, ">", ">gv") -- stays highlighted when indenting
 vim.keymap.set({ "n", "v" }, "<", "<gv") -- stays highlighted when un-indenting
 vim.keymap.set("n", "n", "nzz") -- centres search query forwards
 vim.keymap.set("n", "N", "Nzz") -- centres search query backwards
+vim.keymap.set({ "n", "v" }, "<CR>", "zz", { desc = "centre line on page" })
 vim.keymap.set("n", "<Tab>", function()
-    -- Start insert mode natively at the cursor position
-    vim.cmd("startinsert")
+	-- Start insert mode natively at the cursor position
+	vim.cmd("startinsert")
 
-    -- Feed a literal tab character to be typed immediately after entering insert mode
-    local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
-    vim.api.nvim_feedkeys(tab, "n", false)
+	-- Feed a literal tab character to be typed immediately after entering insert mode
+	local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
+	vim.api.nvim_feedkeys(tab, "n", false)
 end)
 vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch, { desc = "Clear search highlight" })
 vim.keymap.set("n", "U", "<C-r>", { desc = "redo" })
-
