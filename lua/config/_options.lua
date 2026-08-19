@@ -21,6 +21,10 @@ vim.g.dispatch_no_maps = 1
 vim.opt.sidescroll = 5
 vim.opt.sidescrolloff = 20
 
+-- Cursor line 
+-- vim.opt.cursorline = true
+-- Options: "line", "screenline", "number", "both"
+
 -- LangMenu
 vim.api.nvim_create_user_command("LangMenu", function()
 	require("languages.menu").select_languages()

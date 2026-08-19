@@ -7,8 +7,12 @@ return {
 			-- Initial setup (Solid Background)
 			require("dracula").setup({
 				transparent_bg = false,
+                overrides={
+                    CursorLine = { bg = "#292e42", default = false},
+                    CursorLineNr = { bg = "#bb9af7", bold = true, default = false},
+                }
 			})
-			
+
 			-- Set default theme on startup
 			vim.cmd("colorscheme dracula-soft")
 
@@ -20,14 +24,14 @@ return {
 					_G.ThemeState = 2
 					require("dracula").setup({ transparent_bg = true })
 					vim.cmd("colorscheme dracula-soft")
-					
+
 					-- Hard-override core backgrounds to ensure Kitty's terminal color bleeds through
 					vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 					vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 					vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 					vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 					vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-					
+
 					print("Theme: Dracula Soft (Transparent)")
 				else
 					-- Switch to State 1: Solid
@@ -36,6 +40,13 @@ return {
 					vim.cmd("colorscheme dracula-soft")
 					print("Theme: Dracula Soft (Solid)")
 				end
+                -- Customize the CursorLine background
+                -- Setting a subtle dark grey/blue background that fits well with darker themes
+                vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292e42", default = false })
+
+                -- Customize the CursorLineNr (The line number itself)
+                -- Making the active line number bold and a contrasting color
+                vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#bb9af7", bold = true, default = false })
 			end, { desc = "Toggle Theme (Solid <-> Transparent)" })
 		end,
 	},

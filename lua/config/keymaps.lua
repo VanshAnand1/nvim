@@ -13,6 +13,7 @@ vim.keymap.set({ "n", "i", "v" }, "<D-d>", vim.cmd.q, { desc = "Save and Quit" }
 -- ijkl remapping
 vim.keymap.set({ "n", "v" }, "h", "i", { remap = false, desc = "Insert Mode" })
 vim.keymap.set({ "n", "v" }, "H", "I", { remap = false, desc = "Insert at Line Start" })
+vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
 
 vim.keymap.set({ "n", "v", "o" }, "j", "<Left>", { remap = false, desc = "Move Left" })
 vim.keymap.set({ "n", "v", "o" }, "l", "<Right>", { remap = false, desc = "Move Right" })
@@ -32,7 +33,7 @@ vim.keymap.set("n", "<M-i>", "<C-w><C-k>", { desc = "Window Up" })
 vim.keymap.set("n", "<M-l>", "<C-w><C-l>", { desc = "Window Right" })
 
 -- Neotree
-vim.keymap.set("n", "<leader>f", vim.cmd.Neotree, { desc = "Open Neotree" })
+vim.keymap.set("n", "<leader>e", vim.cmd.Neotree, { desc = "Open Neotree" })
 vim.keymap.set("n", "yp", ":let @+ = expand('%:p')<CR>", { desc = "Copy file path" })
 
 -- Line Movement
@@ -42,12 +43,10 @@ vim.keymap.set("n", "K", "}", { desc = "Move down one code block" })
 vim.keymap.set("n", "J", "b", { desc = "Move left by one word" })
 vim.keymap.set("n", "L", "w", { desc = "Move right by one word" })
 
--- Custom movement/insert map
-vim.keymap.set("n", "H", "^i", { desc = "Insert at start of line" })
 
 -- Buffer Sizing and Location
-vim.keymap.set({ "n", "t", "v", "i" }, "<D-.>", "<C-w>>")
-vim.keymap.set({ "n", "t", "v", "i" }, "<D-,>", "<C-w><")
+-- vim.keymap.set({ "n", "t", "v", "i" }, "<D-0>", "<C-w>>", { desc = "Increase window size" })
+-- vim.keymap.set({ "n", "t", "v", "i" }, "<D-9>", "<C-w><", { desc = "Decrease window size" })
 vim.keymap.set("n", "<D-j>", "<C-w>H", { desc = "Move window Left" })
 vim.keymap.set("n", "<D-l>", "<C-w>L", { desc = "Move window Right" })
 vim.keymap.set("n", "<D-i>", "<C-w>K", { desc = "Move window Up" })
@@ -71,7 +70,6 @@ vim.keymap.set("n", "s", '"_s') -- does not copy when replacing single character
 -- Stop 'c' (like cw, ce) and 'C' from copying replaced text
 vim.keymap.set({ "n", "v" }, "c", '"_c', { silent = true })
 vim.keymap.set({ "n", "v" }, "C", '"_C', { silent = true })
-
 -- When pasting over text in visual mode, do not copy the replaced text
 vim.keymap.set("v", "p", '"_dP', { silent = true })
 
