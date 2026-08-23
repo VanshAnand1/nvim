@@ -1,17 +1,17 @@
 local function getPythonPath()
-    -- Check for an active virtual environment first
-    local venv = vim.env.VIRTUAL_ENV
-    if venv then
-        return venv .. "/bin/python"
-    end
-    -- Fall back to system path
-    return vim.fn.exepath("python3") ~= "" and vim.fn.exepath("python3") or vim.fn.exepath("python")
+	-- Check for an active virtual environment first
+	local venv = vim.env.VIRTUAL_ENV
+	if venv then
+		return venv .. "/bin/python"
+	end
+	-- Fall back to system path
+	return vim.fn.exepath("python3") ~= "" and vim.fn.exepath("python3") or vim.fn.exepath("python")
 end
 
 return {
 	-- Dropped black, Ruff handles formatting now
 	mason_packages = { "pyright", "ruff", "debugpy" },
-	
+
 	-- Removed linters table (Ruff LSP provides diagnostics)
 	-- Use Ruff for formatting
 	formatters = { python = { "ruff" } },
